@@ -1,5 +1,5 @@
 Dzisiaj:
--Stworzono repozytorium
+-Stworzyłem repozytorium
 
 Jutro:
--Tworzymy milestone'y
+-Tworzę milestone'y
