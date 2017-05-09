@@ -1,0 +1,2 @@
+dzisiaj: zapoznanie siê z projektem
+Plany na jutro: Zapoznanie siê z Qt, onp.
