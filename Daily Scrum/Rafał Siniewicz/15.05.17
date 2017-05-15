@@ -1,0 +1,7 @@
+Ostatnio zrealizowano:
+- obsługa QT 
+- tworzenie podstawowych algorytmów ONP
+
+Dzisiaj do zrobienia:
+- realizacja podstawowych algorytmów ONP w języku C++ (napisanie funkcji)
+- stworzenie interfejsu graficznego w QT (okno aplikacji, pole wprowadzania wzou funkcji)
