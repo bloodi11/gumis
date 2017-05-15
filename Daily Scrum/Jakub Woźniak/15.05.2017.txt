@@ -1,0 +1,3 @@
+Wykonano: Dzia³anie stosu, wstêpna implementacja ONP dla operacji '+'.
+Do zrobienia: Dalsza praca nad implementacj¹ ONP, naprawa wykrytych usterek w dotychczasowej pracy.
+Trudnoœci: Brak.
