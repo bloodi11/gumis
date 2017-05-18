@@ -1,0 +1,5 @@
+wczoraj:
+dalsze pisanie kodu onp
+szkolenie siê w c++
+dzisiaj:
+pisanie funkcji pomocniczych algorytmu konwersji ³añcucha na onp
