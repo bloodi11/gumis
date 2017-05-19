@@ -1,0 +1,3 @@
+Wykonano: Implementacja ONP dla '/', wersja wstepna potêgowania i pierwiastkowania.
+Do zrobienia: Poprawa ostatnich implementacji.
+Trudnoœci: Brak.
