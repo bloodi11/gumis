@@ -1,0 +1,4 @@
+wczoraj:
+pisanie funkcji pomocniczych algorytmu konwersji ³añcucha na onp
+dzisiaj:
+dalcze pisanie funckcji pomocniczych algorytmu konwersji ³añcucha na onp
