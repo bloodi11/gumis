@@ -131,8 +131,15 @@ vector<string> math_parser::ConvertToONP(string exp)
       }
       else
       {
-         // Symbol jest operatorem
+ 
+                  // Symbol jest operatorem
          oper cur;
+         if(IsOperator(exp[i-1], &cur))		//sprawdzanie czy nie wystepuja po sobie 2 operatory
+         {
+         	cout<<"ERROR: Dwa operatory po sobie "<<endl;
+         	err = true;
+         	break;
+		 }
          IsOperator(ch, &cur); // Pobranie aktualnego operatora do zmiennej cur
 
          if(stack.size() <= 0)
