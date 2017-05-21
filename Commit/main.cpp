@@ -1,56 +1,37 @@
-#include <cstdlib>
 #include <iostream>
 #include <string>
-#include <conio.h>
-#include <math.h>
-#include "MathParser.hpp" // Zawiera definicjê klasy i jej metod
+#include <vector>
+#include <stack>
+#include <iterator>
+#include <map>
+#include <operators.cpp>
+#include <converttoonp.cpp>
+#include <tokenizer.cpp>
+#include <functions.cpp>
+
 
 using namespace std;
-     
-float _dodawanie(float arg1, float arg2)
+
+template<typename T, typename InputIterator>
+void Print( const string& message,
+             const InputIterator& itbegin,
+             const InputIterator& itend,
+             const string& delimiter)
+
 {
-   return arg1 + arg2;
+    cout<<message<<endl;
+    copy(itbegin, itend, ostream_iterator<T>(cout, delimiter.c_str()));
+    cout<<endl;
 }
 
-float _odejmowanie(float arg1, float arg2)
+int main()
 {
-   return arg1 - arg2;
-}
+    string in;
+    cout<<"Podaj wyra"<<char(190)<<"enie."<<endl;
+    Print<char, s_iter>("Wprowadzono: ", in.begin(), in.end(), "");
+    vector<string> tokens=expression_tokenizer(in);
+    vector<string> rpn=convertToONP(tokens, tokens.size(), rpn);
+    Print<string, cv_iter>("Zapis ONP:  ", rpn.begin(), rpn.end(), " ");
 
-float _mnozenie(float arg1, float arg2)
-{
-   return arg1 * arg2;
+    return 0;
 }
-
-float _dzielenie(float arg1, float arg2)
-{
-   return arg1 / arg2;
-}
-
-float _potegowanie(float arg1, float arg2)
-{
-	return pow(arg1,arg2);
-}
-
-float _pierwiastkowanie(float arg1)
-{
-	return sqrt(arg1);
-}
-
-int main(int argc, char *argv[])
-{
-   string exp = "2.55*2+5";
-   math_parser mp;
-   mp.AddOperator("+", 1, (direction)0, _dodawanie);
-   mp.AddOperator("-", 1, (direction)0, _odejmowanie);
-   mp.AddOperator("*", 2, (direction)0, _mnozenie);
-   mp.AddOperator("/", 2, (direction)0, _dzielenie);
-   mp.AddOperator("^", 3, (direction)0, _potegowanie);
-  //mp.AddOperator("sqrt", 3, (direction)0, _pierwiastkowanie);  problem z pierwiastkiem czyli z pozosta³ymi finkcjami tez
-   float ret = mp.Parse(exp);
-   cout << ret << endl;
-   cout <<"Aby kontynuowa" << (char)134 << ", naci" << (char)152 << "nij dowolny klawisz . . .";
-   getch();
-   return EXIT_SUCCESS;
-}
-      
