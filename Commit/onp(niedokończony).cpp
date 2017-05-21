@@ -1,4 +1,19 @@
 #include<iosteram>
+char * ZapisOnp(char *input);
+int pobierzSymbol(char *tab int *liczba);
+int wierzcholek(char *znakZwierzcholka, char stos[]);
+int odczytStosu(chat stos[], cell kolejka[], int priorytet);
+union cell//albo obiekt
+{
+    char znak;
+    int liczba;
+    //wskaznik na funkcje
+};
+int numer=0;
+int main()
+{
+}
+
 cell * ZapisOnp(char *input);
 {
     char stos[20];
