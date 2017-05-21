@@ -27,6 +27,11 @@ float _dzielenie(float arg1, float arg2)
    return arg1 / arg2;
 }
 
+float _potegowanie(float arg1, float arg2)
+{
+	return pow(arg1,arg2);
+}
+
 int main(int argc, char *argv[])
 {
    string exp;
@@ -45,6 +50,7 @@ int main(int argc, char *argv[])
    mp.AddOperator("-", 1, (direction)0, _odejmowanie);
    mp.AddOperator("*", 2, (direction)0, _mnozenie);
    mp.AddOperator("/", 2, (direction)0, _dzielenie);
+   mp.AddOperator("^", 3, (direction)0, _potegowanie);
    float ret = mp.Parse(exp);
    cout << "WYNIK = " << ret << endl << endl;
    cout << "e - wyjscie LUB dowolny klawisz - wprowadz funkcje" << endl;
