@@ -110,3 +110,61 @@ cell * ZapisOnp(char *input);
     }
     return kolejka;
 }
+int pobierzSymbol(char *tab, int *liczba)
+{
+ using namespace std;
+    char tab[20];
+    for(int j=0;tab[numer]!='\0';numer++)
+    {
+            if(isdigit(tab[numer]))
+            {
+                liczba[j]=tab[numer];
+                j++;
+                continue;
+            }
+            if(j!=0)
+                {
+                liczba[j]='\0';
+                *liczba=atoi(liczba);
+                return 1;
+                }
+                if(tab[znak]=='x')
+                {
+                    return 2;
+                }
+                if(tab[znak]=='(')
+                {
+                    return 3;
+                }
+                if(tab[znak]==')')
+                {
+                    return 4;
+                }
+                if(tab[znak]=='+')
+                {
+                    return 5;
+                }
+                if(tab[znak]=='-')
+                {
+                    return 6;
+                }
+                if(tab[znak]=='*')
+                {
+                    return 7;
+                }
+                if(tab[znak]=='/')
+                {
+                    return 8;
+                }
+                if(tab[znak]=='^')
+                {
+                    return 9;
+                }
+            else
+                return -1;
+
+
+    }
+    return -1;
+
+}
