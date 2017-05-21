@@ -83,6 +83,7 @@ vector<string> math_parser::ConvertToONP(string exp)
    int length = exp.size();
    string ch;
    string ch2;
+   int l=0,p=0;
    for(int i = 0; i < length; i++)
    {
       ch = exp[i];
@@ -115,10 +116,12 @@ vector<string> math_parser::ConvertToONP(string exp)
       }
       else if(ch == "(")
       {
+      	l++;
           stack.push_back(ch);
       }
       else if(ch == ")")
       {
+      	p++;
          while(stack[stack.size()-1] != "(")
          {
             out.push_back(stack[stack.size()-1]);
@@ -156,6 +159,11 @@ vector<string> math_parser::ConvertToONP(string exp)
          }
          stack.push_back(ch);
       }
+   }
+   if(l != p) // rozna liczba nawiasow
+   {
+   	cout<<"ERROR: Brakuje nawiasów"<<endl;
+   	err = true;
    }
    while(stack.size() > 0)
    {
