@@ -46,7 +46,7 @@ math_parser::~math_parser()
    //
 }
 
-
+     
 
 bool math_parser::AddOperator(string name, int priority, direction dir, float (*func)(float, float))
 {
@@ -83,11 +83,14 @@ vector<string> math_parser::ConvertToONP(string exp)
    int length = exp.size();
    string ch;
    string ch2;
+   string x;
+   
    int l=0,p=0;
    for(int i = 0; i < length; i++)
    {
       ch = exp[i];
-      if(atoi(ch.c_str()) <= 9 && (atoi(ch.c_str()) > 0 || ch == "0"))
+      if(i>0) x= exp[i-1];
+      if(atoi(ch.c_str()) <= 9 && (atoi(ch.c_str()) > 0 || ch == "0"))   //przypadek gdy znak jest liczba
       {
          // Symbol jest cyfr¹
          ch2 = exp[++i];
@@ -103,7 +106,16 @@ vector<string> math_parser::ConvertToONP(string exp)
       }
       else if(atoi(ch.c_str()) <= 'z' && atoi(ch.c_str()) >= 'a')
       {
-         // Symbol jest zmienn¹, albo funkcj¹
+         // Symbol jest zmienn¹, albo funkcj¹ np sqrt
+        	if(ch == "s")
+        	 {
+         		string ch2 = "";
+         		ch2 = ch + exp[i+1] + exp[i+2] + exp[i+3];
+         		if(ch2 == "sqrt" && ch2 == "Sqrt")
+         		{
+         			
+				 }
+			 }
       }
       else if(ch == ",")
       {
@@ -131,30 +143,47 @@ vector<string> math_parser::ConvertToONP(string exp)
       }
       else
       {
+      	oper cur;
       	if(i==0 || i == length -1) //sprawdzenie czy operator nie wystêpuje na pocz¹tku albo na koncu
       	{
       		cout<<"ERROR: Brak argumentu dla poczatkowego albo koncowego"<<endl;
       		err = true;
 			  	break;
 		}
- 
-                  // Symbol jest operatorem
-         oper cur;
-         if(IsOperator(exp[i-1], &cur))		//sprawdzanie czy nie wystepuja po sobie 2 operatory
+		else 
+		{
+			
+			
+			if(IsOperator(x, &cur)	)	//sprawdzanie czy nie wystepuja po sobie 2 operatory
+       	    {
+       		  	cout<<"ERROR: Dwa operatory po sobie "<<endl;
+       		  	err = true;
+       		  	break;
+			}
+		}
+		
+		
+         // Symbol jest operatorem
+         
+         
+         //IsOperator(exp[i-1], &cur);
+         if(IsOperator(ch, &cur)	)	//sprawdzanie czy nie wystepuja po sobie 2 operatory
          {
          	cout<<"ERROR: Dwa operatory po sobie "<<endl;
          	err = true;
          	break;
 		 }
-         IsOperator(ch, &cur); // Pobranie aktualnego operatora do zmiennej cur
 
+         IsOperator(ch, &cur); // Pobranie aktualnego operatora do zmiennej cur
+         
+          
          if(stack.size() <= 0)
          {
             // Nie ma ¿adnych operatorów na stosie
             stack.push_back(ch);
             continue;
          }
-
+            
          oper op;
          while(IsOperator(stack[stack.size()-1], &op) == true) // Dopóki na stosie znajduje siê odpowiedni operator
          {
@@ -164,7 +193,7 @@ vector<string> math_parser::ConvertToONP(string exp)
                stack.pop_back();
             }
             else
-               break;
+               break; 
             if(stack.size() <= 0)
             {
                break;
@@ -172,6 +201,7 @@ vector<string> math_parser::ConvertToONP(string exp)
          }
          stack.push_back(ch);
       }
+      
    }
    if(l != p) // rozna liczba nawiasow
    {
@@ -184,7 +214,7 @@ vector<string> math_parser::ConvertToONP(string exp)
       out.push_back(stack[stack.size()-1]);
       stack.pop_back();
    }
-
+     
    return out;
 }
 
@@ -192,7 +222,7 @@ int math_parser::Parse(string exp)
 {
    vector <string> symbols = ConvertToONP(exp);
    vector <string> stack;
-
+       
    for(int i = 0; i < symbols.size(); i++)
    {
       string sym = symbols[i];
