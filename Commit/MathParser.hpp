@@ -131,6 +131,12 @@ vector<string> math_parser::ConvertToONP(string exp)
       }
       else
       {
+      	if(i==0 || i == length -1) //sprawdzenie czy operator nie wystêpuje na pocz¹tku albo na koncu
+      	{
+      		cout<<"ERROR: Brak argumentu dla poczatkowego albo koncowego"<<endl;
+      		err = true;
+			  	break;
+		}
  
                   // Symbol jest operatorem
          oper cur;
