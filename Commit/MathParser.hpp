@@ -1,46 +1,46 @@
 #include <string>
 #include <vector>
-#include <cstdlib>
+#include <cstdlib> 
 
 using namespace std;
-
+      
 typedef enum
 {
-   left,
-   right
+   left,  //wszysto lewo
+   right		//oprucz - jesdnostronnego, np -a;
 } direction;
-
-
+      
+            
 class math_parser
 {
    private:
-      struct oper
+      struct oper 				//struktura opisujca operatory
       {
-         string name;
-         int priority;
-         direction dir;
-         float (*func)(float, float);
+         string name;			//nazwa operatora
+         int priority;			//prirytet
+         direction dir;			//kierunek ³aczenia operatora
+         float (*func)(float, float); // wskaŸnik na funkcje dla danego operatora
       };
-
-      vector <oper> ops;
-      int op_count;
+          
+      vector <oper> ops; 				//vektor zawierajacy operatory
+      int op_count;						//liczba operatorów
       bool err;
 
-      bool IsOperator(string ch, oper * op);
-      vector <string> ConvertToONP(string exp);
+      bool IsOperator(string ch, oper * op); 				// sprawdza czy jest operatorem
+      vector <string> ConvertToONP(string exp);				// metoda konvertujaca string na vektor ONP
    public:
-      math_parser();
-      ~math_parser();
-      bool AddOperator(string name, int priority, direction dir, float (*func)(float, float));
-      int Parse(string exp);
+      math_parser(); //konstrujtor
+      ~math_parser(); //destuktor 
+      bool AddOperator(string name, int priority, direction dir, float (*func)(float, float));  //dodawanie operatora
+      int Parse(string exp); //wylicza wartosc wyrazenia
 };
-
+       
 math_parser::math_parser()
 {
    err = false;
    op_count = 0;
 }
-
+      
 math_parser::~math_parser()
 {
    //
