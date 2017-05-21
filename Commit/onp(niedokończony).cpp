@@ -71,3 +71,27 @@ cell * ZapisOnp(char *input);
                    stos[j]='/';
                    j++;
                }
+               else
+               {
+                   j-odczytStosu(stos, kolejka, 2);//cofanie
+                   stos[j]='/';//j zalezne od funkcji
+                }
+            case 9:
+                if(3>wierzcholek(znakZwierzcholka, stos))
+               {
+                   stos[j]='/';
+                   j++;
+               }
+               else
+               {
+                   j-odczytStosu(stos, kolejka, 3);//cofanie
+                   stos[j]='^';//j zalezne od funkcji
+                }
+            }
+            else
+                return NULL;
+        }
+        return NULL;
+    }
+    return kolejka;
+}
