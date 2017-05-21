@@ -31,3 +31,43 @@ cell * ZapisOnp(char *input);
                 stos[j]=')';
                 j++;
                 break;
+ case 5:
+               if(1>wierzcholek(znakZwierzcholka,stos))
+               {
+                   stos[j]='+';
+                   j++;
+               }
+               else
+               {
+                   j-odczytStosu(stos, kolejka, 1);//cofanie
+                   stos[j]='+';//j zalezne od funkcji
+               }
+
+        case 6:
+                if(1>wierzcholek(znakZwierzcholka, stos))
+               {
+                   stos[j]='-';
+                   j++;
+               }
+               else
+               {
+                   j-odczytStosu(stos, kolejka, 1);//cofanie
+                   stos[j]='-';//j zalezne od funkcji
+                }
+           case 7:
+                if(2>wierzcholek(znakZwierzcholka, stos))
+               {
+                   stos[j]='*';
+                   j++;
+               }
+               else
+               {
+                   j-odczytStosu(stos, kolejka, 2);//cofanie
+                   stos[j]='*';//j zalezne od funkcji
+                }
+          case 8:
+                if(2>wierzcholek(znakZwierzcholka, stos))
+               {
+                   stos[j]='/';
+                   j++;
+               }
