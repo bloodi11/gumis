@@ -1,0 +1,3 @@
+Wykonano: Poprawiono pierwiastkowanie, zaimplementowano wartoœæ bezwzglêdn¹ w ONP.
+Do zrobienia: Implementacja obs³ugiwania funkcji (wersja wstêpna, ogólna).
+Trudnoœci: Brak.
