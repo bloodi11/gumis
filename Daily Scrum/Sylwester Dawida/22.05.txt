@@ -1,0 +1,5 @@
+wczoraj:
+nauka c++
+pisanie kodu dla wprowadzenia zmiennych do konwertera onp
+jutro:
+dalsze pisanie kodu dla wprowadzenia zmiennych do konwertera onp

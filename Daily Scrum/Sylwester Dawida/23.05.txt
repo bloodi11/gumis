@@ -1,0 +1,4 @@
+wczoraj:
+dalsze pisanie kodu dla wprowadzenia zmiennych do konwertera onp
+dzisiaj:
+pisanie kodu do dzi³añ pierwiastka i potêgi w onp
