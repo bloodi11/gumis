@@ -1,0 +1,4 @@
+wczoraj: 
+naprawa kodu do dzia³añ pierwiastka i potêgi
+dzisiaj:
+dalsza naprawa kodu do dzia³añ pierwiastka i potêgi
