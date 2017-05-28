@@ -16,13 +16,13 @@ const int RIGHT_ASSOC = 1;
 typedef std::map< std::string, std::pair< int,int > > OpMap;
 typedef std::vector<std::string>::const_iterator cv_iter;
 typedef std::string::iterator s_iter;
-
+//sin s, cos c, tg t, ctg, g
 const OpMap::value_type assocs[] =
     {  OpMap::value_type( "+", std::make_pair<int,int>( 0, LEFT_ASSOC ) ),
        OpMap::value_type( "-", std::make_pair<int,int>( 0, LEFT_ASSOC ) ),
        OpMap::value_type( "*", std::make_pair<int,int>( 5, LEFT_ASSOC ) ),
        OpMap::value_type( "/", std::make_pair<int,int>( 5, LEFT_ASSOC ) ),
-	   OpMap::value_type( "^", std::make_pair<int,int>( 8, LEFT_ASSOC ) ) };
+	   OpMap::value_type( "^", std::make_pair<int,int>( 8, LEFT_ASSOC ) ), };
 
 const OpMap opmap( assocs, assocs + sizeof( assocs ) / sizeof( assocs[ 0 ] ) );
 
