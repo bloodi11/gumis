@@ -25,3 +25,36 @@ void KonwerterONP(AnsiString tab, int* okz, AnsiString* str)
         zn = *str->c_str();
         if (zn == ')')
         {
+ do
+            {
+              stos.Pop(wierzcholek, element);
+              if (element != '(')
+              {
+                s = s + element + ' ';
+              }
+            }
+            while (element != '(');
+        }
+        else
+        {
+          if (stos.IsEmpty(wierzcholek)) {stos.Push(wierzcholek, zn);}
+          else
+          {
+            if (stos.Pobierz(wierzcholek) == '(')
+            {
+              stos.Push(wierzcholek, zn);
+            }
+            else
+            {
+              if ((zn == '*' || zn == '/' || zn == 'N') && (stos.Pobierz(wierzcholek) == '+' || stos.Pobierz(wierzcholek) == '-'))
+              {
+                stos.Push(wierzcholek, zn);
+              }
+              else
+              {
+                if ((zn == '+' || zn =='-') && (stos.Pobierz(wierzcholek) == '+' || stos.Pobierz(wierzcholek) == '-' || stos.Pobierz(wierzcholek) == '*' || stos.Pobierz(wierzcholek) == '/' || stos.Pobierz(wierzcholek) == 'N'))
+                {
+                    stos.Pop(wierzcholek, element);
+                    s = s + element + ' ';
+                    if (!stos.IsEmpty(wierzcholek))
+                    {
