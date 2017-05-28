@@ -218,3 +218,50 @@ znak = tab[*okz];
             *str = 'N';
             return (true);
           };
+*str = '-';
+        }
+        return (true);
+      }
+      else
+      {
+        *str = znak;
+        *okz = *okz + 1;
+        return (true);
+      };
+    };
+  };
+//----------------tu konczy sie zmiana-------------------
+  if (string != "")
+  {
+    if (string[string.Length()] == ',') {return (false);};
+    *liczba = StrToFloat(string);
+    *str = string;
+    return (true);
+  }
+  else
+    {
+      *okz = *okz + 1;
+      if (*okz >= tab.Length())
+      {
+        return (true);
+      }
+      else
+      {
+        return (false);
+      }
+    }
+}
+
+bool Parzysta(int liczbaminusow)
+{
+  int zmp;
+  zmp = liczbaminusow % 2;
+  if (zmp == 0)
+  {
+    return (true);
+  }
+  else
+  {
+    return (false);
+  }
+}
