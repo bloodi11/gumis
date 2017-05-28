@@ -8,10 +8,11 @@
 #include <converttoonp.cpp>
 #include <tokenizer.cpp>
 #include <functions.cpp>
-
+#include <functions2.cpp>
+#include <rpntovalue.cpp>
 
 using namespace std;
-
+//do dokonczenia
 template<typename T, typename InputIterator>
 void Print( const string& message,
              const InputIterator& itbegin,
