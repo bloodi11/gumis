@@ -58,3 +58,64 @@ void KonwerterONP(AnsiString tab, int* okz, AnsiString* str)
                     s = s + element + ' ';
                     if (!stos.IsEmpty(wierzcholek))
                     {
+if (stos.Pobierz(wierzcholek) == '+' || stos.Pobierz(wierzcholek) == '-')
+                      {
+                        stos.Pop(wierzcholek, element);
+                        s = s + element + ' ';
+                      };
+                    };
+                    stos.Push(wierzcholek, zn);
+                }
+                else
+                {
+                  if ((zn == '*' || zn == '/' || zn == 'N') && (stos.Pobierz(wierzcholek) == '*' || stos.Pobierz(wierzcholek) == '/' || stos.Pobierz(wierzcholek) == 'N'))
+                  {
+                    stos.Pop(wierzcholek, element);
+                    s = s + element + ' ';
+                    stos.Push(wierzcholek, zn);
+                  }
+                  else
+                  {
+                    if ((zn == '('))
+                    {
+                      stos.Push(wierzcholek, zn);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    while (*str != "");
+
+    element = stos.PobierzZnak(wierzcholek);
+    if (!(element == '\0'))
+    {
+      do
+      {
+        stos.Pop(wierzcholek, element);
+        s = s + element + ' ';
+        if (wierzcholek == NULL) {element = '\0';}
+      } while(element != '\0');
+    };
+
+  *str = s;
+  stos.KoniecS(wierzcholek);
+};
+
+bool Parzysta(int liczbaminusow);
+
+//Jest to zmieniona funkcja w stosunku do tej uzytej w analizatorze skladniowym,
+//ta funkcja zaklada ze wyrazenie z ktorego sa pobierane znaki jest poprawne (czyli poddane zostalo dzialaniu analizatora skladniowego);
+bool PobierzSymbolONP(float* liczba, AnsiString tab, int* okz, AnsiString* str)
+{
+  bool zmp2 = true;
+  char znak;
+  bool zmp = true;
+  int liczbaprzecinkow = 0;
+  AnsiString string;
+  *str = "";
+  if (*okz <= tab.Length())
+  {
