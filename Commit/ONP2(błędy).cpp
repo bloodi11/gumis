@@ -25,7 +25,7 @@ void KonwerterONP(AnsiString tab, int* okz, AnsiString* str)
         zn = *str->c_str();
         if (zn == ')')
         {
- do
+			 do
             {
               stos.Pop(wierzcholek, element);
               if (element != '(')
@@ -58,7 +58,7 @@ void KonwerterONP(AnsiString tab, int* okz, AnsiString* str)
                     s = s + element + ' ';
                     if (!stos.IsEmpty(wierzcholek))
                     {
-if (stos.Pobierz(wierzcholek) == '+' || stos.Pobierz(wierzcholek) == '-')
+					   if (stos.Pobierz(wierzcholek) == '+' || stos.Pobierz(wierzcholek) == '-')
                       {
                         stos.Pop(wierzcholek, element);
                         s = s + element + ' ';

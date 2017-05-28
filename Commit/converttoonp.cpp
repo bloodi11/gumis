@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <stack>
 
 using namespace std;
 
@@ -10,7 +11,7 @@ vector<string> convertToONP(vector<string>& inputTokens, const int& size, vector
 
     for (int i=0; i<size; i++)
     {
-        string token=inputTokens[i];
+        string token= inputTokens[i];
 
         if (isOperator(token))
         {
