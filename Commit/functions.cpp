@@ -2,10 +2,13 @@
 #include<vector>
 
 using namespace std;
-// do dokonczenia
-bool isFunction();
 
-vector <string> func;
-string sin, cos, tg, ctg, pow, sqrt;
-
+bool isFunction(const string& token, const int&size)
+{
+    for (int i=0; i<size; i++)
+    {
+        if(token=="t" || token=="s" || token=="c" || token=="p")
+            return true;
+    }
+}
 
