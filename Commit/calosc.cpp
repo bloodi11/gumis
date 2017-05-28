@@ -1,10 +1,12 @@
 #include <iostream>
+#include <sstream>
+#include <list>
+#include <stack>
+#include <map>
 #include <string>
 #include <vector>
-#include <stack>
 #include <iterator>
-#include <map>
-#include <cstdlib>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -17,7 +19,7 @@ typedef string::iterator s_iter;
 
 
 
-const OpMap::value_type assocs[]
+const OpMap::value_type assocs[]=
     {
         OpMap::value_type( "+", make_pair<int,int>(0, LEFT_ASSOC)),
         OpMap::value_type( "-", make_pair<int,int>(0, LEFT_ASSOC)),
