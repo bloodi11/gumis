@@ -4,6 +4,7 @@
 #include <stack>
 #include <iterator>
 #include <map>
+#include <cstdlib>
 
 using namespace std;
 
@@ -14,7 +15,9 @@ typedef map< string, pair< int,int > > OpMap;
 typedef vector<string>::const_iterator cv_iter;
 typedef string::iterator s_iter;
 
-const OpMap::value_type assocs[]=
+
+
+const OpMap::value_type assocs[]
     {
         OpMap::value_type( "+", make_pair<int,int>(0, LEFT_ASSOC)),
         OpMap::value_type( "-", make_pair<int,int>(0, LEFT_ASSOC)),
