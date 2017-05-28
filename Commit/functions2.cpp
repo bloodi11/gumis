@@ -1,15 +1,60 @@
 #include <iostream>
-#include <vector>
 #include <string>
-#include <math.h>
+
 using namespace std;
 
-bool isSin(const string& token, const int&size);
-bool isCos(const string& token, const int&size);
-bool isTg(const string& token, const int&size);
-bool isCtg(const string& token, const int&size);
-bool isPow(const string& token, const int&size);
-bool isSqrt(const string& token, const int&size);
-
-vector <string> func;
 string sin, cos, tg, ctg, pow, sqrt;
+
+bool isSin(const string& exp)
+{
+   size_t position=exp.find(sin);
+   if(position==string::npos)
+   {
+       return false;
+   }
+}
+
+bool isCos(const string& exp)
+{
+    size_t position=exp.find(cos);
+    if(position==string::npos)
+    {
+        return false;
+    }
+}
+
+bool isTg(const string& exp)
+{
+    size_t position=exp.find(tg);
+    if(position==string::npos)
+    {
+        return false;
+    }
+}
+
+bool isCtg(const string& exp)
+{
+    size_t position=exp.find(ctg);
+    if(position==string::npos)
+    {
+        return false;
+    }
+}
+
+bool isPow(const string& exp)
+{
+    size_t position=exp.find(pow);
+    if(position==string::npos)
+    {
+        return false;
+    }
+}
+
+bool isSqrt(const string& exp)
+{
+    size_t position=exp.find(sqrt);
+    if(position==string::npos)
+    {
+        return false;
+    }
+}
