@@ -7,6 +7,7 @@
 #include <vector>
 #include <iterator>
 #include <stdlib.h>
+#include <math.h>
 
 const int LEFT_ASSOC  = 0;
 const int RIGHT_ASSOC = 1;
@@ -20,7 +21,8 @@ const OpMap::value_type assocs[] =
     {  OpMap::value_type( "+", std::make_pair<int,int>( 0, LEFT_ASSOC ) ),
        OpMap::value_type( "-", std::make_pair<int,int>( 0, LEFT_ASSOC ) ),
        OpMap::value_type( "*", std::make_pair<int,int>( 5, LEFT_ASSOC ) ),
-       OpMap::value_type( "/", std::make_pair<int,int>( 5, LEFT_ASSOC ) ) };
+       OpMap::value_type( "/", std::make_pair<int,int>( 5, LEFT_ASSOC ) ),
+	   OpMap::value_type( "^", std::make_pair<int,int>( 8, LEFT_ASSOC ) ) };
 
 const OpMap opmap( assocs, assocs + sizeof( assocs ) / sizeof( assocs[ 0 ] ) );
 
@@ -34,7 +36,8 @@ bool isParenthesis( const std::string& token)
 bool isOperator( const std::string& token)
 {
     return token == "+" || token == "-" ||
-           token == "*" || token == "/";
+           token == "*" || token == "/" ||
+		   token == "^";
 }
 
 // Test associativity of operator token
@@ -194,6 +197,7 @@ double RPNtoDouble( std::vector<std::string> tokens )
                 result = token == "+" ? d1 + d2 :
                          token == "-" ? d1 - d2 :
                          token == "*" ? d1 * d2 :
+                         token == "^" ? pow(d1,d2):
                                         d1 / d2;
             }
             else
@@ -272,7 +276,9 @@ void Print( const std::string& message,
 
 int main()
 {
-    std::string s = "( 1 + 2) * ( 3 / 4 )-(5+6)";
+    //std::string s = "( 1 + 2) * ( 3 / 4 )-(5+6)";
+    std::string s;
+    getline(std::cin,s);
 
     Print<char, s_iter>( "Input expression:", s.begin(), s.end(), "" );
 
