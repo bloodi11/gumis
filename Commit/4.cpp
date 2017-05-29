@@ -224,7 +224,7 @@ std::vector<std::string> getExpressionTokens( const std::string& expression )
     std::vector<std::string> tokens;
     std::string str = "";
 
-    for ( int i = 0; i < (int) expression.length(); ++i )
+    for ( int i = 0; i < (int) expression.length(); i++ )
     {
         const std::string token( 1, expression[ i ] );
 
