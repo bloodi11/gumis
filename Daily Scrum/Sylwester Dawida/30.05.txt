@@ -1,0 +1,4 @@
+wczoraj:
+dopracowanie kalkulatora onp i wprowadzenie zmiennych x i y
+dzisiaj:
+dalsze dopracowywanie kalkulatora
