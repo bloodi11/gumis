@@ -1,0 +1,3 @@
+Wykonano: Implementacja zmiennych x, y.
+Do zrobienia: Poprawki dotycz¹ce funkcjonalnoœci zmiennych.
+Problemy: Brak.
