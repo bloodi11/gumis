@@ -1,0 +1,4 @@
+wczoraj:
+poprawa b³êdów w zmiennych kalkulatora
+dzisiaj:
+dalsza poprawa b³êdów w zmiennych kalkulatora
