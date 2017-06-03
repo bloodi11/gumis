@@ -4,3 +4,4 @@ ONP:
 -obs³ugujê funckje trygognometryczen typu sin cos tg ctg
 - oraz sqrt exp
 -oraz podstawowe dzia³ania +  * / - ^
+-w 47 linijce w funkcji parser te dwie liczby to otpowiednio woartoœæ x i y
