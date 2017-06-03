@@ -1,5 +1,5 @@
 ONP:
--nie oblicz wartoœæ wyra¿enia
+-oblicz wartoœæ wyra¿enia je¿eli nie wpowadzimy ¿adnej zmiennej innej ni¿ x lub y
 -obs³ugujê zmienne jednoznakowe np.: x, y ale nie np.: xu
 -obs³ugujê funckje trygognometryczen typu sin cos tg ctg
 - oraz sqrt exp
