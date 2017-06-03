@@ -1,0 +1,6 @@
+ONP:
+-nie oblicz wartoœæ wyra¿enia
+-obs³ugujê zmienne jednoznakowe np.: x, y ale nie np.: xu
+-obs³ugujê funckje trygognometryczen typu sin cos tg ctg
+- oraz sqrt exp
+-oraz podstawowe dzia³ania +  * / - ^
