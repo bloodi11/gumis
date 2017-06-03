@@ -23,6 +23,7 @@ bool Conwerter::isLiczba(char c)
 Conwerter::Conwerter()
 {
 	op_count = 0;
+	innezmienne = false;
 	error = 0;
 	addOp("sin", 1, 3,1);
 	addOp("cos", 1, 3,1);
@@ -107,9 +108,9 @@ bool Conwerter::isOperator(string ch, Oper* op)
 }
 
 
-queue<string> Conwerter::ONP(string exp)
+vector<string> Conwerter::ONP(string exp)
 {
-	queue<string> result;
+	vector<string> result;
 	stack<string> stack;
 	string s;
 	int ln=0, pn=0;
@@ -139,7 +140,7 @@ queue<string> Conwerter::ONP(string exp)
 				i++;
 			}
 			i--;
-			result.push(s);
+			result.push_back(s);
 		}
 		else if (ch == '(')
 		{
@@ -159,7 +160,7 @@ queue<string> Conwerter::ONP(string exp)
 			{
 				while (stack.top() != "(")
 				{
-					result.push(stack.top());
+					result.push_back(stack.top());
 					stack.pop();
 				}
 			}
@@ -181,7 +182,7 @@ queue<string> Conwerter::ONP(string exp)
 			{
 				if (ch=='-' && exp[i - 1] == '(')
 				{
-					result.push("0");
+					result.push_back("0");
 				}
 				Oper cur;
 				isOperator(s, &cur);
@@ -191,7 +192,7 @@ queue<string> Conwerter::ONP(string exp)
 				{
 					if ((cur.kierunek == 0 && cur.piorytet <= op.piorytet) || (cur.kierunek == 1 && cur.piorytet < op.piorytet))
 					{
-						result.push(stack.top());
+						result.push_back(stack.top());
 						stack.pop();
 					}
 					else
@@ -220,7 +221,7 @@ queue<string> Conwerter::ONP(string exp)
 					{
 						if ((cur.kierunek == 0 && cur.piorytet <= op.piorytet) || (cur.kierunek == 1 && cur.piorytet < op.piorytet))
 						{
-							result.push(stack.top());
+							result.push_back(stack.top());
 							stack.pop();
 						}
 						else
@@ -232,7 +233,8 @@ queue<string> Conwerter::ONP(string exp)
 				}
 				else if (s.size() == 1)
 				{
-					result.push(s);
+					if (s != "x" && s != "y") innezmienne = true;
+					result.push_back(s);
 				}
 				else
 				{
@@ -247,7 +249,7 @@ queue<string> Conwerter::ONP(string exp)
 
 	while (!stack.empty())
 	{
-		result.push(stack.top());
+		result.push_back(stack.top());
 		stack.pop();
 	}
 
@@ -259,4 +261,90 @@ queue<string> Conwerter::ONP(string exp)
 
 
 	return result;
+}
+
+double Conwerter::stringTodouble(string s)
+{
+	double d = 0;
+	d = atof(s.c_str());
+	return d;
+}
+
+
+double Conwerter::Parser(vector<string> result, double x, double y)
+{
+	stack<double> stos;
+	
+	for (unsigned int i = 0; i < result.size(); i++)
+	{
+		string sym = result[i];
+		Oper op;
+		if (isOperator(sym, &op))
+		{
+			if (op.liczbarg == 2)
+			{
+				double a, b, wynik;
+				b = stos.top();
+				stos.pop();
+				a = stos.top();
+				stos.pop();
+				if (op.name == "+")		wynik = a + b;
+				else if (op.name == "-")	wynik = a - b;
+				else if (op.name == "*")	wynik = a * b;
+				else if (op.name == "/")
+				{
+					if (b == 0) {
+						cout << "Dzielenie przez zero" << endl;
+						error = 4;
+						return 0;
+					}
+					wynik = a / b;
+				}
+				else if (op.name == "^") wynik = pow(a, b);
+				stos.push(wynik);
+
+			}
+			else if (op.liczbarg == 1)
+			{
+				
+				double wynik, a = stos.top();
+				stos.pop();
+				if (op.name == "sin") wynik = sin(a*PI / 180);
+				else if (op.name == "cos") wynik = cos(a*PI / 180);
+				else if (op.name == "tg") wynik = tan(a*PI / 180);
+				else if (op.name == "ctg") wynik = 1 / tan(a*PI / 180);
+				else if (op.name == "sqrt") wynik = sqrt(a);
+				else if (op.name == "exp") wynik = exp(a);
+
+				stos.push(wynik);
+
+			}
+			
+		}
+		else if (sym == "x")
+		{
+			stos.push(x);
+		}
+		else if (sym == "y")
+		{
+			stos.push(y);
+		}
+		else
+		{
+			stos.push(stringTodouble(sym));
+		}
+	}
+
+
+
+
+	if (stos.size() == 1)
+	{
+		return stos.top();
+	}
+	else
+	{
+		cout << "Nie prawid³owe rozwi¹zanie sprawdz wpisane dane" << endl;
+		return 0;
+	}
 }

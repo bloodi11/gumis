@@ -6,7 +6,8 @@
 #include <conio.h>
 #include <math.h>
 #include <stack>
-#include <queue>
+#include <vector>
+#define PI 3.14159265
 using namespace std;
 #define bib
 #endif
@@ -19,7 +20,7 @@ using namespace std;
 int main()
 {
 	string exp;
-	queue<string> result;
+	vector<string> result;
 	char key='a';
 	while (key != 'e')
 	{
@@ -34,12 +35,16 @@ int main()
 		else
 		{
 			cout << "Zapis w postaci ONP:" << endl;
-			while (!result.empty())
+			for(unsigned int i=0;i<result.size();i++)
 			{
-				cout << result.front() << " ";
-				result.pop();
+				cout << result[i] << " ";
 			}
 			cout << endl;
+		}
+
+		if (!con.licz())
+		{
+			cout << "Wynik = " << con.Parser(result, 1, 2) << endl;
 		}
 		cout << "e - wyjscie LUB dowolny klawisz - wprowadz funkcje" << endl;
 		key = getch();
